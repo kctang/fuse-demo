@@ -1,0 +1,29 @@
+<template name="message">
+  <div class="message">
+    <h3>Messages</h3>
+    {{>messageForm}}
+    <ul>
+      {{#each messages}}
+        <li>
+          <b>{{title}}</b> <img src="/avatar/{{owner_id}}" title="{{owner_name}}"> <input id="remove" type="button" value="Remove">
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+</template>
+
+<template name="messageForm">
+    <div class="message-form">
+      <div>
+        <label for="message">Title</label>
+        <input id="message" size="40" type="text">
+      </div>
+      <div>
+        <label for="desc">Description</label>
+        <textarea id="desc" cols="40" rows="5"></textarea>
+      </div>
+      <div>
+        <input id="post" type="button" value="Post">
+      </div>
+    </div>
+</template>
