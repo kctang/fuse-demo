@@ -1,0 +1,33 @@
+<template name="home">
+  <main class="home mdl-layout__content">
+    <div class="mdl-grid">
+      {{#unless currentUser}}
+        <div class="mdl-cell mdl-card mdl-shadow--2dp">
+          <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Welcome!</h2>
+          </div>
+          <div class="mdl-card__supporting-text mdl-card--expand">
+            Edit "server/configure.js" before using Facebook/Google login.
+          </div>
+          <div class="mdl-card__actions mdl-card--border">
+            <a href="/sign-in" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Sign In</a>
+          </div>
+        </div>
+      {{/unless}}
+      {{#if currentUser}}
+        <div class="mdl-cell mdl-card mdl-shadow--2dp">
+          <div class="mdl-card__supporting-text mdl-card--expand">
+            <p>You are logged in as:</p>
+            <img src="{{currentUser.profile.avatar}}" class="avatar">
+
+            <div class="mdl-typography--body-2">{{currentUser.profile.name}}</div>
+            <div class="mdl-typography--body-1-color-contrast">{{currentUser.profile.email}}</div>
+          </div>
+          <div class="mdl-card__actions mdl-card--border">
+            <a href="/message" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Message</a>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </main>
+</template>

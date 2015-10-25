@@ -1,29 +1,47 @@
 <template name="message">
-  <div class="message">
-    <h3>Messages</h3>
-    {{>messageForm}}
-    <ul>
-      {{#each messages}}
-        <li>
-          <b>{{title}}</b> <img src="/avatar/{{owner_id}}" title="{{owner_name}}"> <input id="remove" type="button" value="Remove">
-        </li>
-      {{/each}}
-    </ul>
+  <div class="message mdl-grid">
+    {{#if formVisible}}
+      {{>messageForm}}
+    {{/if}}
+
+    {{#each messages}}
+      <div class="{{mdlUiCell}} mdl-card mdl-shadow--2dp">
+        <div class="avatar-title mdl-card__title">
+          <img src="/avatar/{{owner_id}}">
+
+          <div>
+            {{title}}
+            <div class="subhead mdl-typography--caption-color-contrast">{{owner_name}}</div>
+          </div>
+        </div>
+        <div class="mdl-card__supporting-text mdl-card--expand">
+          {{desc}}
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+          <button class="remove mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Remove</button>
+        </div>
+      </div>
+    {{/each}}
+
+    {{>mdlUiFab}}
   </div>
 </template>
 
 <template name="messageForm">
-    <div class="message-form">
-      <div>
-        <label for="message">Title</label>
-        <input id="message" size="40" type="text">
+  <div class="{{mdlUiCell}} message-form mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__supporting-text mdl-card--expand">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input id="title" value="{{title}}" type="text" class="mdl-textfield__input"/>
+        <label for="title" class="mdl-textfield__label">Title</label>
       </div>
-      <div>
-        <label for="desc">Description</label>
-        <textarea id="desc" cols="40" rows="5"></textarea>
-      </div>
-      <div>
-        <input id="post" type="button" value="Post">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <textarea id="desc" class="mdl-textfield__input">{{desc}}</textarea>
+        <label for="title" class="mdl-textfield__label">Desc</label>
       </div>
     </div>
+    <div class="mdl-card__actions mdl-card--border">
+      <button class="post mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Post</button>
+      <button class="cancel mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Cancel</button>
+    </div>
+  </div>
 </template>

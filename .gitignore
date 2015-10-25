@@ -2,6 +2,5 @@
 .idea
 node_modules
 
-# ignore symlinks
-packages/fuse
-packages/mdl
+# ignore local packages (managed as symlinks)
+packages

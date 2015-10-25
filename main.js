@@ -1,12 +1,21 @@
 'use strict';
 
 Router.configure({
-  layoutTemplate: 'demoLayout'
+  layoutTemplate: 'mdlUiAppLayout'
 });
 
 Router.route('/', {
+  name: 'home',
   template: 'home'
 });
 
-Message.init();
+MdlUi.configure({
+  title: 'Demo Application',
+
+  publicDrawer: 'appDrawerPublic',
+  drawer: 'appDrawer'
+});
+
 Fuse.SecurityService.init();
+MdlUi.init();
+Message.init();

@@ -1,3 +1,4 @@
 Message = Fuse.Module('message', {
-  schema: Schemas.Message
+  schema: Schemas.Message,
+  timestampable: true
 });
