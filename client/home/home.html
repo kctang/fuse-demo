@@ -20,8 +20,8 @@
             <p>You are logged in as:</p>
             <img src="{{currentUser.profile.avatar}}" class="avatar">
 
-            <div class="mdl-typography--body-2">{{currentUser.profile.name}}</div>
-            <div class="mdl-typography--body-1-color-contrast">{{currentUser.profile.email}}</div>
+            <div id="display-name" class="mdl-typography--body-2">{{currentUser.profile.name}}</div>
+            <div id="email" class="mdl-typography--body-1-color-contrast">{{currentUser.profile.email}}</div>
           </div>
           <div class="mdl-card__actions mdl-card--border">
             <a href="/message" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Message</a>
