@@ -1,0 +1,19 @@
+<template name="messageForm">
+  <div class="{{mdlUiCell}} message-form mdl-card mdl-shadow--2dp">
+    {{#formHandler}}
+      <div class="mdl-card__supporting-text mdl-card--expand">
+        {{>mdlUiText name="title" cell=12}}
+        {{>mdlUiTextarea name="desc" cell=12}}
+        {{#mdlUiSection name="tags" cell=12}}
+          {{>mdlUiText name="tags.$" indexes=index cell=12}}
+        {{/mdlUiSection}}
+      </div>
+      <div class="mdl-card__actions mdl-card--border">
+        <button type="submit" class="post mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Post
+        </button>
+        <button type="button" class="cancel mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Cancel
+        </button>
+      </div>
+    {{/formHandler}}
+  </div>
+</template>

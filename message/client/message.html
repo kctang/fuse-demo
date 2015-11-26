@@ -5,43 +5,36 @@
     {{/if}}
 
     {{#each messages}}
-      <div class="{{mdlUiCell}} mdl-card mdl-shadow--2dp">
-        <div class="avatar-title mdl-card__title">
-          <img src="/avatar/{{owner_id}}">
-
-          <div>
-            {{title}}
-            <div class="subhead mdl-typography--caption-color-contrast">{{owner_name}}</div>
+      {{#if editMode}}
+        {{>messageForm id=_id}}
+      {{/if}}
+      {{#unless editMode}}
+        <div class="{{mdlUiCell}} mdl-card mdl-shadow--2dp">
+          <div class="avatar-title mdl-card__title">
+            <img src="/avatar/{{owner_id}}">
+            <div>
+              {{title}}
+              <div class="subhead mdl-typography--caption-color-contrast">{{owner_name}}</div>
+            </div>
+          </div>
+          <div class="mdl-card__supporting-text mdl-card--expand">
+            {{desc}}
+          </div>
+          <div class="mdl-card__supporting-text mdl-typography--caption-color-contrast mdl-typography--text-right">
+            {{tags}}
+          </div>
+          <div class="mdl-card__actions mdl-card--border">
+            <button class="edit mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Edit</button>
+            <button class="remove mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Remove</button>
           </div>
         </div>
-        <div class="mdl-card__supporting-text mdl-card--expand">
-          {{desc}}
-        </div>
-        <div class="mdl-card__actions mdl-card--border">
-          <button class="remove mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Remove</button>
-        </div>
-      </div>
+      {{/unless}}
     {{/each}}
 
-    {{>mdlUiFab}}
-  </div>
-</template>
+    {{!-- uncomment to see available mdl typography
+    {{>mdlUiTypographyDemo}}
+    --}}
 
-<template name="messageForm">
-  <div class="{{mdlUiCell}} message-form mdl-card mdl-shadow--2dp">
-    <div class="mdl-card__supporting-text mdl-card--expand">
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input id="title" value="{{title}}" type="text" class="mdl-textfield__input"/>
-        <label for="title" class="mdl-textfield__label">Title</label>
-      </div>
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <textarea id="desc" class="mdl-textfield__input">{{desc}}</textarea>
-        <label for="title" class="mdl-textfield__label">Desc</label>
-      </div>
-    </div>
-    <div class="mdl-card__actions mdl-card--border">
-      <button class="post mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Post</button>
-      <button class="cancel mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Cancel</button>
-    </div>
+    {{>mdlUiFab}}
   </div>
 </template>

@@ -1,32 +1,32 @@
+Template.message.onCreated(function () {
+  Session.set('editMode', []);
+});
+
 Template.message.helpers({
-  messages: ()=> Message.collection.find(),
-  formVisible: ()=> Session.get('formVisible')
+  messages() {
+    return Message.collection.find();
+  },
+  formVisible() {
+    return Session.get('newMessageForm')
+  },
+  editMode() {
+    var editMode = Session.get('editMode');
+    return editMode.indexOf(this._id) != -1;
+  }
 });
 
 Template.message.events({
   mdlUiFab() {
-    Session.set('formVisible', true);
+    Session.set('newMessageForm', true);
   },
 
   'click .remove'() {
     Message.collection.remove(this._id);
-  }
-});
-
-Template.messageForm.events({
-  'click .cancel'(event, template) {
-    Session.set('formVisible', false);
   },
-  'click .post'(event, template) {
-    var user = Meteor.user();
 
-    Message.collection.insert({
-      title: template.$('#title').val(),
-      owner_id: user._id,
-      owner_name: user.profile.name,
-      desc: template.$('#desc').val()
-    });
-
-    Session.set('formVisible', false);
+  'click .edit'() {
+    var editMode = Session.get('editMode');
+    editMode.push(this._id);
+    Session.set('editMode', _.uniq(editMode));
   }
 });
