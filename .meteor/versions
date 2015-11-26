@@ -53,6 +53,7 @@ iron:middleware-stack@1.0.11
 iron:router@1.0.12
 iron:url@1.0.11
 jquery@1.11.4
+kctang:form-handler@0.0.1
 kctang:fuse@0.0.1
 kctang:mdl-ui@0.0.6
 lai:collection-extensions@0.1.4
