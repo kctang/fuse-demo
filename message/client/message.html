@@ -1,7 +1,14 @@
 <template name="message">
   <div class="message mdl-grid">
+
     {{#if formVisible}}
       {{>messageForm}}
+    {{/if}}
+
+    {{#if search}}
+      <div class="{{mdlUiCell 12}}">
+        Filtered by "{{search}}"
+      </div>
     {{/if}}
 
     {{#each messages}}
@@ -12,6 +19,7 @@
         <div class="{{mdlUiCell}} mdl-card mdl-shadow--2dp">
           <div class="avatar-title mdl-card__title">
             <img src="/avatar/{{owner_id}}">
+
             <div>
               {{title}}
               <div class="subhead mdl-typography--caption-color-contrast">{{owner_name}}</div>
@@ -38,3 +46,16 @@
     {{>mdlUiFab}}
   </div>
 </template>
+
+<!--
+TODO: make this an mdl-ui control
+    <div class="{{mdlUiCell 10}} mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+      <label class="mdl-button mdl-js-button mdl-button--icon" for="search-expandable">
+        <i class="material-icons">search</i>
+      </label>
+      <div class="mdl-textfield__expandable-holder">
+        <input class="mdl-textfield__input" type="text" id="search-expandable">
+        <label class="mdl-textfield__label" for="search-expandable">Search text</label>
+      </div>
+    </div>
+-->

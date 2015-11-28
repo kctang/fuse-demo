@@ -12,6 +12,9 @@ Template.message.helpers({
   editMode() {
     var editMode = Session.get('editMode');
     return editMode.indexOf(this._id) != -1;
+  },
+  search() {
+    return Session.get('search');
   }
 });
 

@@ -13,7 +13,9 @@ MdlUi.configure({
   title: 'Demo Application',
 
   publicDrawer: 'appDrawerPublic',
-  drawer: 'appDrawer'
+  drawer: 'appDrawer',
+
+  search: true
 });
 
 Fuse.SecurityService.init();
