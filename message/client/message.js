@@ -4,7 +4,27 @@ Template.message.onCreated(function () {
 
 Template.message.helpers({
   messages() {
-    return Message.collection.find();
+    var selector = {};
+    var q = Session.get('search');
+    if (q) {
+      var escapedQ = escapeRegExp(q);
+      selector = {
+        $or: [
+          {tags: q},
+          {title: {$regex: escapedQ, $options: 'i'}},
+          {desc: {$regex: escapedQ, $options: 'i'}}
+        ]
+      };
+    }
+
+    return Message.collection.find(selector, {
+      // mini-mongo options
+    });
+
+    // https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions
+    function escapeRegExp(string) {
+      return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    }
   },
   formVisible() {
     return Session.get('newMessageForm')
@@ -15,6 +35,9 @@ Template.message.helpers({
   },
   search() {
     return Session.get('search');
+  },
+  updatedAt() {
+    return moment(this.updatedAt).fromNow();
   }
 });
 
