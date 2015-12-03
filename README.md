@@ -12,11 +12,7 @@ This guide provides describes how to create an application with the following ca
 * Facebook, Google and password based login support with profile merging
 * Application layout, form and user interface that uses Material Design Lite (MDL) 
 
-This is how the end result looks like:
-
-    TODO: video demo XXX
-
-Let's start.
+Checkout this [video demo](http://bit.ly/21y8u19) of the application. Let's get going.
     
 ## Create Application & Add Packages
 
@@ -36,6 +32,8 @@ Let's start.
     
     # add dependent third party packages
     m add msavin:mongol zodiase:mdl momentjs:moment useraccounts:mdl
+
+// TODO: [useraccounts:mdl](https://github.com/meteor-useraccounts/mdl) has not been published so need to link as local package
 
 Now, the packages (building blocks) are in place but you have not developed your application. So, this is what you will see when accessing http://localhost:3000/:
 
@@ -93,7 +91,7 @@ Create main.js:
     // initialize the Message module
     Message.init();
     
-[iron-router](iron-meteor.github.io/iron-router/) package is used to configure application routing. 
+[iron-router](https://iron-meteor.github.io/iron-router/) package is used to configure application routing. 
 
 ## Create Home & Application Drawer Templates
 
@@ -101,7 +99,7 @@ Create main.js:
 
 Create `home` template at:
 
-* [client/home](https://github.com/kctang/fuse-demo/tree/master/client)
+* [client/home](https://github.com/kctang/fuse-demo/tree/master/client/home)
 
 Next, create the application drawers at:
 
@@ -253,7 +251,7 @@ Message module's templates are located in [message/client](https://github.com/kc
       </div>
     </template>
 
-It uses `form-handler` package to create and update message documents:
+It uses [form-handler](https://github.com/kctang/form-handler) package to create and update message documents:
     
     Template.messageForm.onCreated(function () {
       FormHandler.add(this, {
