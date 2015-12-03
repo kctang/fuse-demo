@@ -18,7 +18,9 @@ Template.message.helpers({
     }
 
     return Message.collection.find(selector, {
-      // mini-mongo options
+      sort: [
+        ['title', 'asc']
+      ]
     });
 
     // https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions
