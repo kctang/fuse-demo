@@ -17,21 +17,21 @@ Checkout this [video demo](http://bit.ly/21y8u19) of the application. Let's get 
 ## Create Application & Add Packages
 
     # create meteor application
-    m create test-1
+    meteor create test-1
 
     # remove generated sample files and unwanted packages
     cd test-1
     rm test-1.*
-    m remove autopublish insecure
+    meteor remove autopublish insecure
     
     # add packages used in demo
-    m add kctang:fuse kctang:mdl-ui kctang:form-handler
+    meteor add kctang:fuse kctang:mdl-ui kctang:form-handler
 
     # add related core meteor packages
-    m add stylus accounts-google accounts-facebook accounts-password
+    meteor add stylus accounts-google accounts-facebook accounts-password
     
     # add dependent third party packages
-    m add msavin:mongol zodiase:mdl momentjs:moment useraccounts:mdl
+    meteor add msavin:mongol zodiase:mdl momentjs:moment useraccounts:mdl
 
 // TODO: [useraccounts:mdl](https://github.com/meteor-useraccounts/mdl) has not been published so need to link as local package
 
