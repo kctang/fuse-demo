@@ -9,6 +9,11 @@ Router.route('/', {
   template: 'home'
 });
 
+Router.route('/echo-form', {
+  data: {},
+  template: 'echoForm'
+});
+
 MdlUi.configure({
   title: 'Demo Application',
 
